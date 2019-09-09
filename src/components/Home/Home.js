@@ -13,11 +13,21 @@ class Home extends Component {
     };
   }
 
+  componentDidMount(){
+    const reduxState = store.getState();
+    store.subscribe(() => {
+      this.setState({
+        recipes: reduxState.recipes
+      })
+    })
+  }
+
   render() {
     const recipes = this.state.recipes.map((recipe, i) => {
       return (
         <RecipeCard
           key={i}
+          index={i}
           name={recipe.name}
           category={recipe.category}
           authorFirst={recipe.authorFirst}
