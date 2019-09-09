@@ -72,8 +72,15 @@ function reducer(state=initialState, action) {
             };
             const newRecipes = [...state.recipes, recipe];
             return {
-                ...state,
-                recipes: newRecipes
+                recipes: newRecipes,
+//instead of returning copy of state(...state) before line 75, you are sending back 
+//the state properties as empty values
+                name: "",
+                category: "",
+                authorFirst: "",
+                authorLast: "",
+                ingredients: [],
+                instructions: []
             }
         default: 
             return state;
